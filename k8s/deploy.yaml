@@ -1,0 +1,35 @@
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: doss-portal-front
+  namespace: msa-guild-dev
+  labels:
+    app: doss-iam-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: doss-portal-front
+      version: '0.1'
+  template:
+    metadata:
+      labels:
+        app: doss-portal-front
+        version: '0.1'
+    spec:
+      containers:
+        - name: doss-portal-front
+          env:
+            - name: SPRING_PROFILES_ACTIVE
+              value: local
+          image: public.ecr.aws/a4s3k7o5/doss-portal-front:latest
+          ports:
+            - containerPort: 8090
+          imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: 300m
+              memory: 512Mi
+            limits:
+              cpu: 600m
+              memory: 1024Mi

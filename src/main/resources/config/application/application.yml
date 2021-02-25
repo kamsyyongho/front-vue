@@ -1,0 +1,40 @@
+server:
+  port: 8090 
+  error:
+    path: /index.html
+    whitelabel:
+      enabled: false
+    include-exception: false
+    include-stacktrace: never
+  servlet:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+#    session:
+#      cookie:
+#        domain: sktelecom.com
+spring:
+  application:
+    name: doss-portal-front
+  profiles:
+    active: local
+  main:
+    allow-bean-definition-overriding: true        
+doss:
+  client:
+    network:
+      prefix:
+        SKT: 100.100,110.110,120.120
+        VDI: 10.179,11.179
+        SOC: 200.200,201.201,202.202
+feign:
+  httpclient:
+    connection-timeout: 180000
+    disable-ssl-validation: true
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 120000
+        

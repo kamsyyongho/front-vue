@@ -1,0 +1,36 @@
+spring:
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+  redis:
+    ssl: true
+    host: azure-redis-doss-prd.redis.cache.windows.net
+    port: 6380
+    password: dTVuBdsPnlHRVKKD9NvAfOa4I9MHwZR0pyLZIu7OSJg=
+    connect-timeout: 3000
+    timeout: 3000
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+        max-wait: -1
+        min-idle: 0
+        time-between-eviction-runs: 600000
+  cache:
+    #    cache-names: common-cache
+    redis:
+      use-key-prefix: true
+      key-prefix: "doss:portal:front:"
+      cache-null-values: true
+  #        time-to-live:
+  session:
+    timeout: 7200
+    store-type: redis
+    redis:
+      namespace: "doss"
+logging:
+  config: classpath:config/log/logback-dev.xml
+feign:
+  doss-portal-api:
+    #    url: a165012ebceb14e20831d9c37d4eda19-858593845.ap-northeast-2.elb.amazonaws.com/api-gateway/portal-api
+    url: http://doss-api-gateway/api-gateway/iam-api

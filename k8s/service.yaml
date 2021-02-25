@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: doss-portal-front
+  labels:
+    app: doss-portal-front
+spec:
+  ports:
+    - name: http #http로
+      port: 80 #80으로 편함
+      targetPort: 9090
+  selector:
+    app: doss-portal-front
+  type: LoadBalancer

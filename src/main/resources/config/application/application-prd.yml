@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    platform: postgres
+    url: jdbc:postgresql://database-msa-guild-postgre.cdnxkpguqzfr.ap-northeast-2.rds.amazonaws.com:5432/customerDB
+    username: msaguild
+    password: msaguild
+    driverClassName: org.postgresql.Driver
+
+logging:
+  level:
+    com.skcc.twd: TRACE
